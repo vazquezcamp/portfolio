@@ -89,7 +89,7 @@
 .intro__cloud--5 { --exit: cloud-out-bl; width: 70vw; min-width: 380px; bottom: -14vh; left: -12vw; animation-delay: -1.6s, 1.3s; }
 .intro__cloud--6 { --exit: cloud-out-br; width: 66vw; min-width: 360px; bottom: -16vh; right: -14vw; animation-delay: -0.4s, 1.35s; }
 
-/* Caritas dormidas en algunas nubes */
+/* Sombra y borde rosa "horneados" en cada nube (en vez de filter) */
 .intro__cloud .shade {
     fill: #05020d;
     opacity: .55;
@@ -98,18 +98,6 @@
 .intro__cloud .rim {
     fill: #ff9ac3;
     opacity: .3;
-}
-
-.intro__cloud .face {
-    fill: none;
-    stroke: #1a0f2e;
-    stroke-width: 3.5;
-    stroke-linecap: round;
-}
-
-.intro__cloud .blush {
-    fill: #ff7fb8;
-    opacity: .45;
 }
 
 /* ---------- Gatito en la oscuridad ---------- */
