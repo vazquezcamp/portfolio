@@ -1,0 +1,188 @@
+/* Grid de proyectos + tarjeta individual */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-lg);
+}
+
+.project {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ffffff1c;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background: var(--surface);
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    animation: appear .45s both;
+}
+
+.project:hover,
+.project:has(.project__open:focus-visible) {
+    transform: translateY(-7px);
+    border-color: #ffffff33;
+    box-shadow: 0 20px 50px #0005;
+}
+
+.project__art {
+    aspect-ratio: 16 / 10;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project__art svg,
+.project__art img {
+    height: 94%;
+    max-width: 90%;
+    filter: drop-shadow(0 17px 12px #1b092c65);
+    transition: transform .45s;
+}
+
+/* Imágenes propias: más aire arriba para no chocar con la etiqueta */
+.project__art img {
+    height: 84%;
+    width: auto;
+    margin-top: 10%;
+    object-fit: contain;
+}
+
+.project:hover .project__art svg,
+.project:hover .project__art img {
+    transform: translateY(-6px) rotate(-2deg) scale(1.035);
+}
+
+/* Temas de color de la tarjeta (se eligen desde data/projects.js → color) */
+.theme-purple { background: radial-gradient(circle at 55% 32%, #a765f5, #58358c 72%); }
+.theme-rose   { background: radial-gradient(circle at 55% 32%, #ff9ac3, #a24a7b 80%); }
+.theme-blue   { background: radial-gradient(circle at 55% 32%, #9cceff, #5276c7 80%); }
+.theme-mint   { background: radial-gradient(circle at 55% 32%, #a2eed9, #4d9c95 80%); }
+.theme-peach  { background: radial-gradient(circle at 55% 32%, #ffce9e, #d78286 80%); }
+
+/* Arriba a la izquierda para no tapar el ícono de la ilustración */
+.project__tag {
+    position: absolute;
+    left: var(--space-md);
+    top: var(--space-md);
+    border-radius: var(--radius-pill);
+    background: #ffffffcb;
+    color: #2a173e;
+    font-size: 12px;
+    font-weight: 900;
+    padding: 6px 12px;
+    z-index: 2;
+}
+
+.project__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-lg) var(--space-lg) var(--space-md);
+}
+
+.project__body h3 {
+    font: 900 22px/1.2 var(--font-display);
+    margin: 0 0 var(--space-xs);
+}
+
+/* Botón del título: su ::after cubre toda la tarjeta → toda es clicable */
+.project__open {
+    all: unset;
+    cursor: pointer;
+}
+
+.project__open::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.project:has(.project__open:focus-visible) {
+    outline: 3px solid var(--focus);
+    outline-offset: 4px;
+}
+
+.project__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.project__more {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--violet-soft);
+}
+
+.project__more-arrow {
+    display: inline-block;
+    transition: transform .25s;
+}
+
+.project:hover .project__more-arrow {
+    transform: translateX(4px);
+}
+
+.project__body p {
+    flex: 1;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #d3c7e2;
+    margin: 0 0 var(--space-lg);
+}
+
+/* Pie separado por una línea para dar estructura a la tarjeta */
+.project__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--line);
+}
+
+.project__footer small {
+    font-size: 13px;
+    color: #baa8d2;
+}
+
+/* El link externo queda por encima del área clicable de la tarjeta */
+.project__link {
+    position: relative;
+    z-index: 2;
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--line);
+    font-size: 18px;
+    transition: background-color .2s, color .2s;
+}
+
+.project__link:hover {
+    background: var(--violet-soft);
+    color: #26133d;
+}
+
+.project-grid__empty {
+    padding: 32px;
+    color: var(--muted);
+}
+
+@media (max-width: 850px) {
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+}

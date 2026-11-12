@@ -1,0 +1,102 @@
+/* Sobre mí: texto breve a la izquierda, tres pilares a la derecha */
+
+.about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-2xl) var(--space-3xl);
+    align-items: center;
+}
+
+.about__intro h2 {
+    font: 900 clamp(30px, 3.6vw, 44px)/1.1 var(--font-display);
+    letter-spacing: -.5px;
+    margin: 0 0 var(--space-md);
+}
+
+.about__intro p:last-child {
+    max-width: var(--measure);
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.about__pillars {
+    display: grid;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pillar {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: #ffffff06;
+    transition: border-color .25s, background-color .25s, transform .25s;
+}
+
+.pillar:hover {
+    border-color: #ffffff30;
+    background: #ffffff0c;
+    transform: translateX(4px);
+}
+
+.pillar__icon {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #b66dff33, #ff92bd26);
+    color: var(--violet-soft);
+}
+
+.pillar__icon svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pillar h3 {
+    margin: 2px 0 4px;
+    font: 800 17px/1.3 var(--font-display);
+}
+
+.pillar p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--muted);
+}
+
+/* El pilar de IA se resalta apenas, con un borde rosa */
+.pillar:last-child {
+    border-color: #ff92bd33;
+}
+
+.pillar:last-child .pillar__icon {
+    color: var(--pink);
+}
+
+@media (max-width: 850px) {
+    .about {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 560px) {
+    .pillar {
+        padding: var(--space-md);
+    }
+}

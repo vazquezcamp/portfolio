@@ -1,0 +1,57 @@
+/* ==========================================================
+   Design tokens — único lugar para colores, fuentes y medidas.
+   Cambia aquí y se refleja en todo el sitio.
+   ========================================================== */
+:root {
+    /* Colores base */
+    --bg: #130d24;
+    --bg-glow: #39205c;
+    --surface: #241736;
+    --fg: #fbf7ff;
+    --fg-soft: #e8def5;
+    --muted: #c6bbd9;
+    --line: #ffffff20;
+
+    /* Acentos */
+    --violet: #ac73ff;
+    --violet-soft: #d7a5ff;
+    --pink: #ff92bd;
+    --pink-soft: #ff9bc7;
+    --focus: #ffb3d4;
+    --ink: #211134; /* texto oscuro sobre fondos claros */
+
+    /* Tipografía */
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --font-display: 'Nunito', system-ui, sans-serif;
+
+    /* Escala de espaciado (base 4/8px). Usa estas en vez de números sueltos */
+    --space-2xs: 4px;
+    --space-xs: 8px;
+    --space-sm: 12px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+
+    /* Ritmo vertical entre secciones: crece con la pantalla */
+    --section-space: clamp(72px, 8vw, 112px);
+
+    /* Ancho cómodo de lectura */
+    --measure: 46ch;
+
+    /* Layout */
+    --shell-max: 1200px;
+    --shell-pad: clamp(20px, 4vw, 40px);
+    --header-h: 84px;
+    --radius-pill: 999px;
+    --radius-card: 27px;
+    --radius-panel: 30px;
+}
+
+@media (max-width: 560px) {
+    :root {
+        --header-h: 68px;
+    }
+}

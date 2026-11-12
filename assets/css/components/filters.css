@@ -1,0 +1,43 @@
+/* Barra sobre el grid: filtros a la izquierda, contador a la derecha */
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    margin: 0 0 var(--space-xl);
+}
+
+.filters {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.filter {
+    min-height: 44px;
+    border: 1px solid var(--line);
+    background: #ffffff0a;
+    color: #e5dcf1;
+    padding: 0 var(--space-lg);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background-color .2s, border-color .2s, color .2s;
+}
+
+.filter:hover {
+    border-color: #ffffff45;
+    background: #ffffff14;
+}
+
+.filter[aria-pressed="true"] {
+    background: var(--violet-soft);
+    color: var(--ink);
+    font-weight: 800;
+    border-color: var(--violet-soft);
+}
+
+.toolbar__count {
+    font-size: 14px;
+    color: #9d8bb3;
+}

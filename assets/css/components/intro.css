@@ -1,0 +1,251 @@
+/* ==========================================================
+   Intro de bienvenida: noche de nubes "tenebrosa pero kawaii"
+   - 100% CSS: se abre sola aunque falle el JavaScript.
+   - Para quitarla, borra el bloque .intro del index.html
+     (el hero deja de esperar automáticamente).
+   Línea de tiempo:
+     0s     aparece el gatito en la oscuridad y parpadea
+     1.25s  el gatito se desvanece
+     1.3s   las nubes se abren hacia las esquinas
+     1.6s   la noche se aclara
+     2.4s   la intro desaparece
+   ========================================================== */
+
+/* Mientras exista la intro, el contenido del hero espera a que se abra */
+:root:has(.intro) {
+    --intro-delay: 1.6s;
+}
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    animation: intro-hide .01s linear 2.4s forwards;
+}
+
+/* ---------- Cielo nocturno ---------- */
+.intro__sky {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 50% 45%, #3b1f63 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 120%, #4a2470 0%, transparent 60%),
+        #0c0718;
+    animation: sky-fade .8s ease 1.6s forwards;
+}
+
+/* Estrellas: dos capas que titilan a destiempo */
+.intro__sky::before,
+.intro__sky::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle, #ffe3f3 1.2px, transparent 1.8px) 0 0 / 90px 90px,
+        radial-gradient(circle, #d7b5ff 1px, transparent 1.6px) 45px 30px / 130px 110px;
+    animation: twinkle 2.4s ease-in-out infinite;
+    will-change: opacity, transform;
+}
+
+.intro__sky::after {
+    background:
+        radial-gradient(circle, #fff 1.4px, transparent 2px) 20px 60px / 170px 150px,
+        radial-gradient(circle, #ffb3d4 1px, transparent 1.6px) 80px 10px / 110px 140px;
+    animation-delay: 1.2s;
+}
+
+/* Niebla baja */
+.intro__fog {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: -5%;
+    height: 45%;
+    /* Degradado ya difuminado: sin filter blur, que es carísimo en áreas grandes */
+    background: radial-gradient(ellipse at 50% 100%, #7b4bb855 0%, #7b4bb822 35%, transparent 70%);
+    will-change: translate, opacity;
+    animation: fog-drift 6s ease-in-out infinite alternate, sky-fade .8s ease 1.5s forwards;
+}
+
+/* ---------- Nubes ---------- */
+.intro__cloud {
+    position: absolute;
+    z-index: 2;
+    overflow: visible;
+    /* Sin filter: la sombra y el borde rosa están dibujados en el SVG (.shade/.rim).
+       Así el navegador solo mueve capas ya pintadas (GPU) en cada frame. */
+    will-change: transform, translate, opacity;
+    animation:
+        cloud-bob 3.2s ease-in-out infinite alternate,
+        var(--exit) 1.1s cubic-bezier(.6, 0, .3, 1) 1.3s forwards;
+}
+
+.intro__cloud--1 { --exit: cloud-out-tl; width: 62vw; min-width: 340px; top: -8vh; left: -14vw; }
+.intro__cloud--2 { --exit: cloud-out-tr; width: 58vw; min-width: 320px; top: -4vh; right: -16vw; animation-delay: -1.2s, 1.35s; }
+.intro__cloud--3 { --exit: cloud-out-l;  width: 56vw; min-width: 300px; top: 34vh; left: -26vw; animation-delay: -0.6s, 1.3s; }
+.intro__cloud--4 { --exit: cloud-out-r;  width: 54vw; min-width: 300px; top: 38vh; right: -24vw; animation-delay: -2s, 1.4s; }
+.intro__cloud--5 { --exit: cloud-out-bl; width: 70vw; min-width: 380px; bottom: -14vh; left: -12vw; animation-delay: -1.6s, 1.3s; }
+.intro__cloud--6 { --exit: cloud-out-br; width: 66vw; min-width: 360px; bottom: -16vh; right: -14vw; animation-delay: -0.4s, 1.35s; }
+
+/* Caritas dormidas en algunas nubes */
+.intro__cloud .shade {
+    fill: #05020d;
+    opacity: .55;
+}
+
+.intro__cloud .rim {
+    fill: #ff9ac3;
+    opacity: .3;
+}
+
+.intro__cloud .face {
+    fill: none;
+    stroke: #1a0f2e;
+    stroke-width: 3.5;
+    stroke-linecap: round;
+}
+
+.intro__cloud .blush {
+    fill: #ff7fb8;
+    opacity: .45;
+}
+
+/* ---------- Gatito en la oscuridad ---------- */
+.intro__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    display: grid;
+    justify-items: center;
+    gap: var(--space-md);
+    translate: -50% -50%;
+    will-change: opacity, scale;
+    animation:
+        creature-in .6s cubic-bezier(.3, 1.5, .5, 1) .1s both,
+        creature-out .35s ease-in 1.2s forwards;
+}
+
+.intro__creature {
+    width: 180px;
+    overflow: visible;
+    animation: creature-float 1.6s ease-in-out infinite alternate;
+}
+
+.intro__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: blink 1.5s ease-in-out .35s infinite;
+}
+
+.intro__text {
+    margin: 0;
+    font: 800 16px var(--font-display);
+    letter-spacing: .02em;
+    color: #ffc2e1;
+    text-shadow: 0 0 12px #ff6fb188;
+}
+
+.intro__dots span {
+    display: inline-block;
+    animation: dot-hop .9s ease-in-out infinite;
+}
+
+.intro__dots span:nth-child(2) { animation-delay: .15s; }
+.intro__dots span:nth-child(3) { animation-delay: .3s; }
+
+/* ---------- Murciélagos ---------- */
+.intro__bat {
+    position: absolute;
+    z-index: 2;
+    width: 34px;
+    fill: #1a0f2e;
+    offset-rotate: 0deg;
+    animation: bat-fly 2.6s linear infinite, sky-fade .4s ease 1.4s forwards;
+}
+
+.intro__bat--1 { top: 22%; left: -40px; }
+.intro__bat--2 { top: 30%; left: -40px; width: 24px; animation-duration: 3.1s, .4s; animation-delay: .5s, 1.4s; }
+
+.intro__bat svg {
+    display: block;
+    width: 100%;
+    animation: bat-flap .16s ease-in-out infinite alternate;
+    transform-origin: center;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes cloud-bob {
+    from { translate: 0 0; }
+    to   { translate: 0 -10px; }
+}
+
+@keyframes cloud-out-tl { to { transform: translate(-60vw, -60vh) scale(1.1); opacity: 0; } }
+@keyframes cloud-out-tr { to { transform: translate(60vw, -60vh) scale(1.1); opacity: 0; } }
+@keyframes cloud-out-l  { to { transform: translate(-75vw, -10vh) scale(1.1); opacity: 0; } }
+@keyframes cloud-out-r  { to { transform: translate(75vw, -10vh) scale(1.1); opacity: 0; } }
+@keyframes cloud-out-bl { to { transform: translate(-60vw, 60vh) scale(1.1); opacity: 0; } }
+@keyframes cloud-out-br { to { transform: translate(60vw, 60vh) scale(1.1); opacity: 0; } }
+
+@keyframes creature-in {
+    from { opacity: 0; scale: .6; }
+    to   { opacity: 1; scale: 1; }
+}
+
+@keyframes creature-out {
+    to { opacity: 0; scale: 1.15; }
+}
+
+@keyframes creature-float {
+    from { transform: translateY(3px); }
+    to   { transform: translateY(-7px); }
+}
+
+@keyframes blink {
+    0%, 42%, 54%, 100% { transform: scaleY(1); }
+    48%                { transform: scaleY(.08); }
+}
+
+@keyframes dot-hop {
+    0%, 60%, 100% { transform: none; }
+    30%           { transform: translateY(-5px); }
+}
+
+@keyframes bat-fly {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(30vw, -24px); }
+    50%  { transform: translate(60vw, 10px); }
+    75%  { transform: translate(90vw, -18px); }
+    100% { transform: translate(115vw, 0); }
+}
+
+@keyframes bat-flap {
+    from { transform: scaleY(1); }
+    to   { transform: scaleY(.35); }
+}
+
+@keyframes fog-drift {
+    from { translate: -3% 0; }
+    to   { translate: 3% 0; }
+}
+
+@keyframes sky-fade {
+    to { opacity: 0; }
+}
+
+@keyframes intro-hide {
+    to { visibility: hidden; opacity: 0; }
+}
+
+/* Sin animaciones: no mostramos la intro y nada espera */
+@media (prefers-reduced-motion: reduce) {
+    .intro {
+        display: none;
+    }
+
+    :root:has(.intro) {
+        --intro-delay: 0s;
+    }
+}

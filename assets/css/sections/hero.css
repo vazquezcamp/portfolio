@@ -1,0 +1,188 @@
+.hero {
+    /* Ocupa casi toda la primera pantalla, sin exagerar en monitores altos */
+    min-height: min(calc(100svh - var(--header-h)), 600px);
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+    padding: var(--space-lg) 0 0;
+}
+
+/* El texto del hero también espera a que se abra la cortina */
+.hero .reveal {
+    transition-delay: var(--intro-delay, 0s);
+}
+
+.hero__eyebrow {
+    display: inline-block;
+    font-size: 18px;
+    color: #c68bff;
+    font-weight: 800;
+}
+
+.hero h1 {
+    font: 900 clamp(52px, 6.4vw, 88px)/1 var(--font-display);
+    letter-spacing: -.035em;
+    margin: var(--space-sm) 0 var(--space-lg);
+}
+
+.hero__subtitle {
+    font-size: clamp(18px, 2vw, 23px);
+    font-weight: 500;
+    color: #e2d6f0;
+    margin: 0 0 var(--space-md);
+}
+
+.hero__description {
+    color: var(--muted);
+    max-width: var(--measure);
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.hero__art {
+    position: relative;
+    min-height: 430px;
+    display: grid;
+    place-items: center;
+    /* variables que mueve el JS de parallax (assets/js/modules/parallax.js) */
+    --px: 0;
+    --py: 0;
+}
+
+/* Halo de luz detrás del gatito, late suavemente */
+.hero__glow {
+    position: absolute;
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    /* Halo con degradado suave, sin filter blur (se repintaba en cada frame) */
+    background: radial-gradient(circle, #9d5cff4d 0%, #9d5cff26 30%, #ff6fb114 50%, transparent 68%);
+    will-change: transform, opacity, scale;
+    animation: glow-pulse 4.5s ease-in-out infinite;
+    transform: translate(calc(var(--px) * -10px), calc(var(--py) * -10px));
+}
+
+/* Contenedor: entrada + parallax con el mouse */
+.hero__cat-wrap {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 560px);
+    /* --intro-delay lo define la intro (components/intro.css); 0s si no existe */
+    animation: cat-enter 1.1s cubic-bezier(.2, .9, .3, 1.25) var(--intro-delay, 0s) both;
+    transform: translate(calc(var(--px) * 14px), calc(var(--py) * 10px))
+               rotate(calc(var(--px) * 2deg));
+    transition: transform .4s ease-out;
+    will-change: transform;
+}
+
+/* El gatito flota y se balancea */
+.hero__cat {
+    width: 100%;
+    animation: cat-float 6s ease-in-out calc(1.1s + var(--intro-delay, 0s)) infinite;
+    transform-origin: 50% 85%;
+    /* Sin drop-shadow: la imagen ya trae su brillo; el halo y la sombra del piso
+       son capas aparte, así flotar solo mueve una capa ya pintada */
+    will-change: transform;
+}
+
+.hero__cat-wrap:hover .hero__cat {
+    animation-play-state: paused;
+}
+
+/* Sombra en el piso: se encoge cuando el gatito sube */
+.hero__shadow {
+    position: absolute;
+    bottom: 6%;
+    width: 56%;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #080411aa 0%, #08041155 45%, transparent 70%);
+    will-change: transform, opacity;
+    animation: shadow-breathe 6s ease-in-out calc(1.1s + var(--intro-delay, 0s)) infinite;
+}
+
+.hero__spark {
+    position: absolute;
+    z-index: 3;
+    color: #ffb4e0;
+    font-size: 30px;
+    text-shadow: 0 0 12px #ff8fd0;
+    animation: twinkle 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.hero__spark--1 { left: 4%;  top: 18%; }
+.hero__spark--2 { right: 4%; top: 10%;    animation-delay: 1s; font-size: 24px; }
+.hero__spark--3 { left: 2%; bottom: 14%; animation-delay: 2s; font-size: 22px; }
+
+/* Cuando el hero sale de la pantalla, sus animaciones infinitas se pausan
+   (la clase la pone assets/js/modules/pause-offscreen.js) */
+.is-offscreen,
+.is-offscreen * {
+    animation-play-state: paused !important;
+}
+
+@keyframes cat-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25%      { transform: translateY(-9px) rotate(-1.2deg); }
+    50%      { transform: translateY(-16px) rotate(0deg); }
+    75%      { transform: translateY(-9px) rotate(1.2deg); }
+}
+
+@keyframes shadow-breathe {
+    0%, 100% { transform: scaleX(1);  opacity: .9; }
+    50%      { transform: scaleX(.8); opacity: .55; }
+}
+
+@keyframes glow-pulse {
+    0%, 100% { opacity: .75; scale: 1; }
+    50%      { opacity: 1;   scale: 1.08; }
+}
+
+@keyframes cat-enter {
+    from { opacity: 0; translate: 0 40px; scale: .9; }
+    to   { opacity: 1; translate: 0 0;    scale: 1; }
+}
+
+@media (max-width: 850px) {
+    .hero {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+        padding-top: var(--space-md);
+    }
+
+    .hero__art {
+        min-height: 0;
+        padding: var(--space-md) 0;
+        order: -1;
+    }
+
+    .hero__cat-wrap {
+        width: min(100%, 440px);
+    }
+}
+
+@media (max-width: 560px) {
+    .hero__cat-wrap {
+        width: min(100%, 360px);
+    }
+
+    /* Botones a todo lo ancho: más fáciles de tocar y alineados */
+    .hero__actions {
+        flex-direction: column;
+    }
+
+    .hero__actions .btn {
+        width: 100%;
+    }
+}

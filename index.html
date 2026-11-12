@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#130d24">
+    <meta name="description" content="Israel Vazquez — Ingeniero en Sistemas, desarrollo web y diseño UX/UI. Herramientas digitales con personalidad, construidas con bases sólidas y uso responsable de la IA.">
+    <title>Israel Vazquez — Cute Devil Studio</title>
+
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Nunito:wght@800;900&display=swap">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <script type="module" src="assets/js/main.js"></script>
+</head>
+
+<body>
+    <!-- ============ INTRO DE NUBES (estilos en components/intro.css) ============ -->
+    <div class="intro" aria-hidden="true">
+        <!-- Formas reutilizables: nube, murciélago y gradientes -->
+        <svg width="0" height="0" style="position:absolute">
+            <defs>
+                <linearGradient id="intro-cloud-a" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#6a45a3" />
+                    <stop offset="1" stop-color="#2a1a46" />
+                </linearGradient>
+                <linearGradient id="intro-cloud-b" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#8558c2" />
+                    <stop offset="1" stop-color="#3a2560" />
+                </linearGradient>
+                <linearGradient id="intro-horn" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ff7aa8" />
+                    <stop offset="1" stop-color="#c2185b" />
+                </linearGradient>
+                <filter id="intro-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="4" result="b" />
+                    <feMerge><feMergeNode in="b" /><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+                <symbol id="intro-cloud-shape" viewBox="0 0 240 130">
+                    <circle cx="62" cy="80" r="40" />
+                    <circle cx="112" cy="56" r="52" />
+                    <circle cx="170" cy="72" r="42" />
+                    <circle cx="206" cy="94" r="28" />
+                    <rect x="26" y="80" width="204" height="48" rx="24" />
+                </symbol>
+                <symbol id="intro-bat-shape" viewBox="0 0 64 28">
+                    <path d="M32 9c2-4 4-6 4-6l1 5c4-1 8 0 10 3 4-5 11-7 17-5-5 2-7 7-7 12-3-2-7-2-9 1-2-2-6-2-8 1l-8 8-8-8c-2-3-6-3-8-1-2-3-6-3-9-1 0-5-2-10-7-12 6-2 13 0 17 5 2-3 6-4 10-3l1-5s2 2 4 6z" />
+                </symbol>
+            </defs>
+        </svg>
+
+        <div class="intro__sky"></div>
+        <div class="intro__fog"></div>
+
+        <svg class="intro__cloud intro__cloud--1" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" /><use href="#intro-cloud-shape" fill="url(#intro-cloud-a)" /></svg>
+        <svg class="intro__cloud intro__cloud--2" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" />
+            <use href="#intro-cloud-shape" fill="url(#intro-cloud-b)" />
+            <path class="face" d="M98 84q6 6 12 0m22 0q6 6 12 0" />
+            <ellipse class="blush" cx="90" cy="96" rx="8" ry="4" />
+            <ellipse class="blush" cx="152" cy="96" rx="8" ry="4" />
+        </svg>
+        <svg class="intro__cloud intro__cloud--3" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" /><use href="#intro-cloud-shape" fill="url(#intro-cloud-b)" /></svg>
+        <svg class="intro__cloud intro__cloud--4" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" /><use href="#intro-cloud-shape" fill="url(#intro-cloud-a)" /></svg>
+        <svg class="intro__cloud intro__cloud--5" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" />
+            <use href="#intro-cloud-shape" fill="url(#intro-cloud-b)" />
+            <path class="face" d="M104 80q6 6 12 0m20 0q6 6 12 0" />
+            <path class="face" d="M122 94q4 3 8 0" />
+            <ellipse class="blush" cx="96" cy="92" rx="8" ry="4" />
+            <ellipse class="blush" cx="156" cy="92" rx="8" ry="4" />
+        </svg>
+        <svg class="intro__cloud intro__cloud--6" viewBox="0 0 240 130"><use href="#intro-cloud-shape" class="shade" transform="translate(0 9)" /><use href="#intro-cloud-shape" class="rim" transform="translate(0 -3)" /><use href="#intro-cloud-shape" fill="url(#intro-cloud-a)" /></svg>
+
+        <div class="intro__bat intro__bat--1"><svg viewBox="0 0 64 28"><use href="#intro-bat-shape" /></svg></div>
+        <div class="intro__bat intro__bat--2"><svg viewBox="0 0 64 28"><use href="#intro-bat-shape" /></svg></div>
+
+        <div class="intro__center">
+            <!-- Silueta del gatito diablito con ojos de neón -->
+            <svg class="intro__creature" viewBox="0 0 200 170">
+                <path d="M44 86 30 14l58 34Z" fill="#0d0818" stroke="#3a2363" stroke-width="3" stroke-linejoin="round" />
+                <path d="M156 86 170 14l-58 34Z" fill="#0d0818" stroke="#3a2363" stroke-width="3" stroke-linejoin="round" />
+                <path d="M70 50Q60 20 80 6q6 22 8 40Z" fill="url(#intro-horn)" />
+                <path d="M130 50q10-30-10-44-6 22-8 40Z" fill="url(#intro-horn)" />
+                <ellipse cx="100" cy="102" rx="80" ry="64" fill="#0d0818" stroke="#3a2363" stroke-width="3" />
+                <g class="intro__eyes" filter="url(#intro-glow)">
+                    <circle cx="70" cy="98" r="20" fill="none" stroke="#ffd9f2" stroke-width="7" />
+                    <circle cx="130" cy="98" r="20" fill="none" stroke="#ffd9f2" stroke-width="7" />
+                </g>
+                <path d="M94 120h12l-6 8Z" fill="#f4b183" />
+                <ellipse cx="46" cy="124" rx="11" ry="5" fill="#ff7fb8" opacity=".35" />
+                <ellipse cx="154" cy="124" rx="11" ry="5" fill="#ff7fb8" opacity=".35" />
+            </svg>
+            <p class="intro__text">Invocando la magia<span class="intro__dots"><span>.</span><span>.</span><span>.</span></span></p>
+        </div>
+    </div>
+
+    <div class="shell">
+
+        <!-- ============ HEADER ============ -->
+        <header class="site-header">
+            <a href="#inicio" class="brand">
+                <img src="assets/img/logo.svg" alt="" width="37" height="37">
+                <span>Israel Vazquez</span>
+            </a>
+            <nav class="site-nav" aria-label="Principal">
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#contacto">Contacto</a>
+                <a class="btn btn--primary" href="#proyectos">Explorar ↗</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- ============ HERO ============ -->
+            <section id="inicio" class="hero" data-pause-offscreen>
+                <div class="reveal">
+                    <span class="hero__eyebrow">Hola, soy ✦</span>
+                    <h1>Israel<br>Vazquez<span class="text-pink">.</span></h1>
+                    <p class="hero__subtitle">Ingeniero en Sistemas · Desarrollo web · UX/UI</p>
+                    <p class="hero__description">
+                        Creo herramientas y experiencias digitales con personalidad, utilidad y un
+                        toque diabólicamente tierno.
+                    </p>
+                    <div class="hero__actions">
+                        <a class="btn btn--primary" href="#proyectos">Explora mis proyectos ↓</a>
+                        <a class="btn btn--secondary" href="#contacto">Hablemos ↗</a>
+                    </div>
+                </div>
+
+                <div class="hero__art" data-parallax>
+                    <div class="hero__glow" aria-hidden="true"></div>
+                    <span class="hero__spark hero__spark--1" aria-hidden="true">✦</span>
+                    <span class="hero__spark hero__spark--2" aria-hidden="true">✧</span>
+                    <span class="hero__spark hero__spark--3" aria-hidden="true">✦</span>
+                    <div class="hero__cat-wrap">
+                        <picture>
+                            <!-- 600px para celular, 1120px para pantallas retina/escritorio -->
+                            <source type="image/webp"
+                                srcset="assets/img/hero-cat-600.webp 600w, assets/img/hero-cat-1120.webp 1120w"
+                                sizes="(max-width: 560px) 360px, (max-width: 850px) 440px, 560px">
+                            <img class="hero__cat" src="assets/img/hero-cat.png" width="1448" height="1086"
+                                fetchpriority="high"
+                                alt="Gatito diablito con capucha morada, alas y cuernos, trabajando en su laptop junto a una luna">
+                        </picture>
+                    </div>
+                    <div class="hero__shadow" aria-hidden="true"></div>
+                </div>
+            </section>
+
+            <!-- ============ SOBRE MÍ ============ -->
+            <section id="sobre-mi" class="section reveal" aria-labelledby="sobre-mi-title">
+                <div class="about">
+                    <header class="about__intro">
+                        <p class="kicker">Sobre mí</p>
+                        <h2 id="sobre-mi-title">Detrás de lo tierno, <span class="text-pink">hay ingeniería</span></h2>
+                        <p>
+                            Soy Ingeniero en Sistemas y me dedico al desarrollo web y al diseño UX/UI.
+                            Me gusta que las cosas se vean bonitas, pero sobre todo que funcionen bien:
+                            rápidas, accesibles y fáciles de mantener.
+                        </p>
+                    </header>
+
+                    <ul class="about__pillars">
+                        <li class="pillar">
+                            <span class="pillar__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4l-3 16" /></svg>
+                            </span>
+                            <div>
+                                <h3>Bases de ingeniería</h3>
+                                <p>Entiendo cómo funciona lo que construyo, de los datos a la interfaz.</p>
+                            </div>
+                        </li>
+                        <li class="pillar">
+                            <span class="pillar__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" /><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" /></svg>
+                            </span>
+                            <div>
+                                <h3>Diseño para personas</h3>
+                                <p>Interfaces claras y accesibles, pensadas para quien las usa todos los días.</p>
+                            </div>
+                        </li>
+                        <li class="pillar">
+                            <span class="pillar__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><path d="M12 3c.6 3.8 2.2 5.4 6 6-3.8.6-5.4 2.2-6 6-.6-3.8-2.2-5.4-6-6 3.8-.6 5.4-2.2 6-6Z" /><path d="M19 15c.3 1.6 1 2.3 2.5 2.5-1.5.3-2.2 1-2.5 2.5-.3-1.5-1-2.2-2.5-2.5 1.5-.2 2.2-.9 2.5-2.5Z" /></svg>
+                            </span>
+                            <div>
+                                <h3>IA con criterio</h3>
+                                <p>La uso para acelerar, no para pensar por mí: reviso, pruebo y entiendo cada línea, cuidando la seguridad y la privacidad.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ============ PROYECTOS ============ -->
+            <!-- Los proyectos se editan en assets/js/data/projects.js -->
+            <section id="proyectos" class="section reveal" aria-labelledby="proyectos-title">
+                <header class="section-head">
+                    <p class="kicker">Proyectos</p>
+                    <h2 id="proyectos-title">Mis pequeños inventos <span class="text-pink">✳</span></h2>
+                    <p>Proyectos que irán creciendo conmigo. Algunos gratis, otros con planes.</p>
+                </header>
+                <div class="toolbar">
+                    <div class="filters" id="project-filters" role="group" aria-label="Filtrar proyectos"></div>
+                    <span class="toolbar__count" id="project-counter" aria-live="polite"></span>
+                </div>
+                <div id="projects" class="project-grid"></div>
+            </section>
+
+            <!-- ============ CONTACTO ============ -->
+            <section id="contacto" class="section reveal" aria-labelledby="contacto-title" data-pause-offscreen>
+                <div class="contact">
+                    <div>
+                        <p class="kicker">Contacto</p>
+                        <h2 id="contacto-title">¿Creamos algo bonito? ♡</h2>
+                        <p>¿Tienes una idea, una colaboración o quieres conocer un proyecto? Escríbeme y hagamos que suceda.</p>
+                    </div>
+                    <div class="contact__cta">
+                        <!-- Mascota sentada sobre el botón: voltea a verte al pasar el mouse -->
+                        <div class="mascot" aria-hidden="true">
+                            <span class="mascot__heart">♥</span>
+                            <img class="mascot__img mascot__img--front" src="assets/img/mascot/cat-front.webp" alt="" width="360" height="415" loading="lazy" decoding="async">
+                            <img class="mascot__img mascot__img--side" src="assets/img/mascot/cat-side.webp" alt="" width="360" height="415" loading="lazy" decoding="async">
+                        </div>
+                        <a class="btn btn--primary" href="#contacto" data-contact-email>Contáctame ↗</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ============ DETALLE DE PROYECTO (lo llena assets/js/modules/project-modal.js) ============ -->
+        <dialog id="project-dialog" class="modal" aria-labelledby="modal-title"></dialog>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="site-footer">
+            <span>© <span data-year></span> Israel Vazquez · Hecho con ♡ y un poquito de magia.</span>
+            <span>Ingeniería en Sistemas · Desarrollo web · UX/UI</span>
+        </footer>
+    </div>
+</body>
+
+</html>

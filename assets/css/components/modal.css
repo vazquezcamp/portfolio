@@ -1,0 +1,286 @@
+/* ==========================================================
+   Detalle de proyecto (<dialog id="project-dialog">)
+   Escritorio: ventana centrada. Celular: hoja que sube desde abajo.
+   Solo anima opacity/transform (rápido, en GPU).
+   ========================================================== */
+
+/* Evita que la página de fondo se desplace mientras el detalle está abierto */
+html:has(.modal[open]) {
+    overflow: hidden;
+}
+
+html {
+    scrollbar-gutter: stable;
+}
+
+.modal {
+    width: min(880px, calc(100vw - 32px));
+    max-height: min(88vh, 900px);
+    padding: 0;
+    border: 1px solid #ffffff22;
+    border-radius: 28px;
+    background: var(--surface);
+    color: var(--fg);
+    box-shadow: 0 30px 80px #05020dcc;
+    overflow: hidden;
+}
+
+.modal::backdrop {
+    background: #0b0618b3;
+}
+
+/* Animación de entrada (navegadores sin @starting-style simplemente lo muestran) */
+.modal[open] {
+    animation: modal-in .28s cubic-bezier(.2, .9, .3, 1.1);
+}
+
+.modal[open]::backdrop {
+    animation: backdrop-in .2s ease;
+}
+
+@keyframes modal-in {
+    from { opacity: 0; transform: translateY(16px) scale(.97); }
+}
+
+@keyframes backdrop-in {
+    from { opacity: 0; }
+}
+
+.modal__panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+}
+
+.modal__scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    outline: none; /* recibe el foco al abrir (para scroll con teclado) */
+}
+
+/* ---------- Encabezado con la ilustración ---------- */
+.modal__hero {
+    --hero-h: clamp(180px, 30vh, 280px);
+    display: grid;
+    place-items: center;
+    height: var(--hero-h);
+    overflow: hidden;
+}
+
+/* Alto explícito: los % de alto no se resuelven dentro de una fila de grid "auto" */
+.modal__hero img,
+.modal__hero svg {
+    height: calc(var(--hero-h) * .86);
+    width: auto;
+    max-width: 90%;
+    margin-top: calc(var(--hero-h) * .08);
+    object-fit: contain;
+}
+
+.modal__close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 3;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffffd9;
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 18px #0004;
+    transition: transform .2s, background-color .2s;
+}
+
+.modal__close:hover {
+    background: #fff;
+    transform: rotate(90deg);
+}
+
+/* ---------- Cuerpo ---------- */
+.modal__body {
+    padding: var(--space-xl) clamp(20px, 5vw, 48px) var(--space-xl);
+}
+
+.modal__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 var(--space-sm);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    color: #e5dcf1;
+}
+
+.chip--plan {
+    background: var(--violet-soft);
+    border-color: var(--violet-soft);
+    color: var(--ink);
+    font-weight: 800;
+}
+
+.chip--status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #7ef0c1;
+    box-shadow: 0 0 8px #7ef0c1;
+}
+
+.modal__title {
+    font: 900 clamp(30px, 4vw, 40px)/1.1 var(--font-display);
+    letter-spacing: -.5px;
+    margin: 0 0 var(--space-sm);
+}
+
+.modal__summary {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.65;
+    color: #ddd2ec;
+}
+
+.modal__highlights {
+    display: grid;
+    gap: var(--space-xs);
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.modal__highlights li {
+    display: flex;
+    gap: var(--space-sm);
+    line-height: 1.5;
+    color: var(--muted);
+}
+
+.modal__highlights li::before {
+    content: "✦";
+    color: var(--pink);
+}
+
+.modal__section {
+    margin-top: var(--space-2xl);
+}
+
+.modal__subtitle {
+    margin: 0 0 var(--space-md);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #c68bff;
+}
+
+.modal__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.modal__stack li {
+    padding: 6px var(--space-sm);
+    border-radius: 10px;
+    background: #ffffff10;
+    font-size: 14px;
+}
+
+.modal__empty {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-2xl) var(--space-lg);
+    border: 2px dashed #ffffff22;
+    border-radius: 20px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.modal__empty span {
+    font-size: 32px;
+}
+
+.modal__empty p {
+    margin: 0;
+}
+
+/* ---------- Acciones fijas abajo ---------- */
+.modal__actions {
+    display: flex;
+    gap: var(--space-sm);
+    padding: var(--space-md) clamp(20px, 5vw, 48px);
+    border-top: 1px solid var(--line);
+    background: #1e132e;
+}
+
+.btn.is-disabled {
+    opacity: .55;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ---------- Celular: hoja desde abajo ---------- */
+@media (max-width: 640px) {
+    .modal {
+        width: 100%;
+        max-width: none;
+        max-height: 92vh;
+        margin: auto 0 0;
+        border-radius: 24px 24px 0 0;
+        border-bottom: 0;
+    }
+
+    .modal[open] {
+        animation: sheet-in .3s cubic-bezier(.2, .9, .3, 1);
+    }
+
+    @keyframes sheet-in {
+        from { transform: translateY(100%); }
+    }
+
+    /* "Asa" visual de la hoja */
+    .modal__panel::before {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        z-index: 3;
+        width: 44px;
+        height: 5px;
+        border-radius: 3px;
+        background: #ffffff99;
+        translate: -50% 0;
+    }
+
+    .modal__actions {
+        padding-bottom: max(var(--space-md), env(safe-area-inset-bottom));
+    }
+
+    .modal__actions .btn {
+        flex: 1;
+    }
+}

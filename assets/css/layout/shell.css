@@ -1,0 +1,5 @@
+.shell {
+    max-width: var(--shell-max);
+    padding: 0 var(--shell-pad);
+    margin: auto;
+}

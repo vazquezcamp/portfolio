@@ -1,0 +1,162 @@
+.contact {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(120deg, #32204f, #26183e);
+    border: 1px solid #ffffff1e;
+    border-radius: var(--radius-panel);
+    padding: clamp(32px, 5vw, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl) var(--space-2xl);
+}
+
+/* Brillo decorativo en la esquina */
+.contact::before {
+    content: "";
+    position: absolute;
+    right: -120px;
+    top: -140px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #b66dff40, transparent 70%);
+    pointer-events: none;
+}
+
+.contact > * {
+    position: relative;
+}
+
+.contact h2 {
+    font: 900 clamp(30px, 3.4vw, 42px)/1.15 var(--font-display);
+    letter-spacing: -.5px;
+    margin: 0 0 var(--space-sm);
+}
+
+.contact p:not(.kicker) {
+    color: var(--muted);
+    font-size: 17px;
+    margin: 0;
+    max-width: var(--measure);
+    line-height: 1.65;
+}
+
+.contact .btn {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    min-height: 56px;
+    padding: 0 var(--space-xl);
+    font-size: 16px;
+}
+
+/* ---------- CTA con mascota ---------- */
+.contact__cta {
+    flex-shrink: 0;
+    display: grid;
+    justify-items: center;
+}
+
+/* El gatito se sienta detrás del borde superior del botón */
+.mascot {
+    position: relative;
+    z-index: 1;
+    width: 132px;
+    aspect-ratio: 360 / 415;
+    margin-bottom: -22px;
+    transform-origin: 50% 100%;
+    animation: mascot-breathe 3.2s ease-in-out infinite;
+    will-change: transform;
+}
+
+.mascot__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity .18s ease;
+}
+
+.mascot__img--side {
+    opacity: 0;
+}
+
+.mascot__heart {
+    position: absolute;
+    top: 6%;
+    right: 2%;
+    z-index: 1;
+    font-size: 22px;
+    color: var(--pink);
+    text-shadow: 0 0 10px #ff6fb1aa;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Al pasar el mouse / enfocar el botón: voltea, brinca y sale un corazón */
+.contact__cta:has(.btn:hover, .btn:focus-visible) .mascot {
+    animation: mascot-hop .45s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.contact__cta:has(.btn:hover, .btn:focus-visible) .mascot__img--front { opacity: 0; }
+.contact__cta:has(.btn:hover, .btn:focus-visible) .mascot__img--side  { opacity: 1; }
+
+.contact__cta:has(.btn:hover, .btn:focus-visible) .mascot__heart {
+    animation: heart-float .9s ease-out forwards;
+}
+
+/* Al aparecer la sección, el gatito asoma con un rebote */
+.reveal .mascot__img--front {
+    transform: translateY(30%) scale(.8);
+    opacity: 0;
+    transition: transform .5s cubic-bezier(.3, 1.6, .5, 1) .25s, opacity .3s ease .25s;
+}
+
+.reveal.visible .mascot__img--front {
+    transform: none;
+    opacity: 1;
+}
+
+.reveal.visible .contact__cta:has(.btn:hover, .btn:focus-visible) .mascot__img--front {
+    opacity: 0;
+    transition-delay: 0s;
+}
+
+@keyframes mascot-breathe {
+    0%, 100% { transform: scale(1, 1); }
+    50%      { transform: scale(1.025, .975); }
+}
+
+@keyframes mascot-hop {
+    0%   { transform: translateY(0) scale(1.06, .92); }
+    50%  { transform: translateY(-14px) scale(.96, 1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes heart-float {
+    0%   { opacity: 0; transform: translateY(6px) scale(.5); }
+    30%  { opacity: 1; transform: translateY(-6px) scale(1.1); }
+    100% { opacity: 0; transform: translateY(-34px) scale(.9); }
+}
+
+@media (max-width: 850px) {
+    .contact {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .contact__cta {
+        width: 100%;
+    }
+
+    .contact .btn {
+        width: 100%;
+    }
+
+    .mascot {
+        width: 112px;
+    }
+}

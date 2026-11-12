@@ -1,0 +1,31 @@
+/* Clases de utilidad pequeñas y reutilizables */
+
+.text-pink {
+    color: var(--pink-soft);
+}
+
+/* Etiqueta pequeña sobre los títulos de sección ("PROYECTOS", "CONTACTO"…) */
+.kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin: 0 0 var(--space-sm);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #c68bff;
+}
+
+.kicker::before {
+    content: "";
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+/* Espaciado estándar de una sección */
+.section {
+    padding-top: var(--section-space);
+}

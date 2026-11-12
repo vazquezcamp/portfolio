@@ -1,0 +1,113 @@
+/* Galería de capturas: scroll-snap nativo (rápido y sin librerías) */
+
+.gallery {
+    position: relative;
+}
+
+.gallery__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    border-radius: 18px;
+    background: #120b1f;
+}
+
+.gallery__track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery__track:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 3px;
+}
+
+.gallery__slide {
+    flex: 0 0 100%;
+    margin: 0;
+    scroll-snap-align: center;
+}
+
+.gallery__zoom {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 10;
+    cursor: zoom-in;
+}
+
+/* Capturas de celular (verticales) y de escritorio conviven sin recortarse */
+.gallery__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gallery__slide figcaption {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.gallery__arrow {
+    position: absolute;
+    top: calc(50% - 20px);
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: #ffffffd9;
+    color: var(--ink);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px #0005;
+    translate: 0 -50%;
+    transition: opacity .2s, transform .2s;
+}
+
+.gallery__arrow:hover {
+    transform: scale(1.08);
+}
+
+.gallery__arrow:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gallery__arrow--prev { left: var(--space-sm); }
+.gallery__arrow--next { right: var(--space-sm); }
+
+.gallery__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-top: var(--space-md);
+}
+
+.gallery__dots button {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: #ffffff40;
+    cursor: pointer;
+    transition: width .25s, background-color .25s;
+}
+
+.gallery__dots button[aria-current] {
+    width: 26px;
+    background: var(--violet-soft);
+}
+
+/* En pantallas táctiles se desliza con el dedo: ocultamos flechas */
+@media (hover: none) {
+    .gallery__arrow {
+        display: none;
+    }
+}
