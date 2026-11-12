@@ -1,7 +1,6 @@
 /**
  * ==========================================================
  *  AGREGA TUS PROYECTOS AQUÍ
- *  Los ejemplos son demostrativos, no productos publicados.
  * ==========================================================
  *
  * TARJETA
@@ -97,17 +96,6 @@ export const projects = [
         screenshots: [
             // { src: 'assets/img/projects/cuentos/1.webp', alt: '…', caption: '…' },
         ],
-    },
-    {
-        id: 'ui-kit',
-        name: 'UI Kit',
-        description: 'Componentes y recursos para crear interfaces con personalidad.',
-        type: 'gratis',
-        category: 'Diseño UX/UI',
-        color: 'blue',
-        art: 'designer',
-        url: '',
-        status: 'Próximamente',
     },
 ];
 
