@@ -11,7 +11,7 @@ Cópiala a la raíz del proyecto nuevo y pídele a Claude: *"Sigue DESIGN.md par
   Oscuro y misterioso, pero nunca agresivo: todo es redondo, suave y amable.
 - **Tres reglas:**
   1. **Lo tierno va encima de una base seria.** Bonito, pero rápido, accesible y bien construido.
-  2. **Redondo siempre.** Píldoras, tarjetas de 27px de radio, nubes, burbujas. Nada de esquinas duras.
+  2. **Redondo siempre.** Píldoras, tarjetas de 27px de radio, burbujas. Nada de esquinas duras.
   3. **El brillo es el acento, no el fondo.** Fondos oscuros y calmados; el rosa y el violeta solo en lo importante.
 
 ---
@@ -115,7 +115,7 @@ Todo vive en `assets/css/base/tokens.css`. No uses colores sueltos si existe un 
 | Rebote kawaii (entradas, brincos) | .45–.6s | `cubic-bezier(.3, 1.6, .5, 1)` |
 | Abrir/cerrar paneles | .28–.3s | `cubic-bezier(.2, .9, .3, 1.1)` |
 | Flotar / respirar (infinito) | 3–6s | `ease-in-out`, alternado |
-| Intro de bienvenida | ≤ 2.5s en total | — |
+| Intro de bienvenida | ≈ 2s en total | — |
 
 **Reglas de rendimiento (obligatorias):**
 1. **Anima solo `transform` y `opacity`** (o `translate`, `scale`, `rotate`). Nunca `width`, `top`, `margin`…
