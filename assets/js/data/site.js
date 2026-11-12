@@ -4,6 +4,6 @@
  */
 export const site = {
     name: 'Israel Vazquez',
-    email: 'TU_CORREO@EJEMPLO.COM', // TODO: reemplazar por tu correo real
+    email: 'israel.vazquez@softmor.com',
     emailSubject: 'Hola Israel',
 };
