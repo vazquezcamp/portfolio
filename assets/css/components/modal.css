@@ -146,6 +146,12 @@ html {
     box-shadow: 0 0 8px #7ef0c1;
 }
 
+/* Sin link todavía: puntito ámbar en vez de verde */
+.chip--soon::before {
+    background: #ffc46b;
+    box-shadow: 0 0 8px #ffc46b;
+}
+
 .modal__title {
     font: 900 clamp(30px, 4vw, 40px)/1.1 var(--font-display);
     letter-spacing: -.5px;

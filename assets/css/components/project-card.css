@@ -62,10 +62,22 @@
 .theme-peach  { background: radial-gradient(circle at 55% 32%, #ffce9e, #d78286 80%); }
 
 /* Arriba a la izquierda para no tapar el ícono de la ilustración */
-.project__tag {
+.project__tags {
     position: absolute;
     left: var(--space-md);
     top: var(--space-md);
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.project__tag.project__tag--soon {
+    background: #1e132ecc;
+    color: #ffd7a8;
+}
+
+.project__tag {
     border-radius: var(--radius-pill);
     background: #ffffffcb;
     color: #2a173e;

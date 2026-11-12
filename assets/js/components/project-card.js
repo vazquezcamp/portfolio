@@ -26,7 +26,10 @@ export function projectCard(project) {
 
     return `<article class="project" data-id="${escapeHTML(project.id)}">
         <div class="project__art theme-${escapeHTML(project.color)}">
-            <span class="project__tag">${escapeHTML(planLabel(project))}</span>
+            <span class="project__tags">
+                <span class="project__tag">${escapeHTML(planLabel(project))}</span>
+                ${project.url ? '' : '<span class="project__tag project__tag--soon">Próximamente</span>'}
+            </span>
             ${projectArt(project)}
         </div>
         <div class="project__body">

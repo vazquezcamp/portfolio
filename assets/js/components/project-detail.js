@@ -32,7 +32,7 @@ export function projectDetail(project) {
             <div class="modal__body">
                 <div class="modal__chips">
                     <span class="chip chip--plan">${escapeHTML(planLabel(project))}</span>
-                    ${project.status ? `<span class="chip chip--status">${escapeHTML(project.status)}</span>` : ''}
+                    ${project.status ? `<span class="chip chip--status${project.url ? '' : ' chip--soon'}">${escapeHTML(project.status)}</span>` : ''}
                     <span class="chip">${escapeHTML(project.category)}</span>
                 </div>
 

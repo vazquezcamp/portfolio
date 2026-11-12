@@ -65,9 +65,9 @@ export const projects = [
         color: 'mint',
         image: 'assets/img/projects/promodex.webp',
         imageAlt: 'Gatito diablito coleccionista con gorra, mochila y una esfera en la mano',
-        url: '', // en desarrollo: se mostrará como "Próximamente"
+        url: '', // sin link todavía → se muestra como "Próximamente"
 
-        status: 'En desarrollo',
+        status: 'Próximamente',
         summary: 'PromoDex es una app gratuita para coleccionistas de figuras promocionales —Vualá, Little Bites, Gansito, Nito de Bimbo y más— para llevar el registro de tu colección en un solo lugar.',
         highlights: [
             'Gratis para coleccionistas',
@@ -84,7 +84,8 @@ export const projects = [
         color: 'purple',
         image: 'assets/img/projects/cuentos.webp',
         imageAlt: 'Gatito diablito disfrazado de hombre lobo, con garras y colmillos, haciendo pose de susto',
-        url: '', // TODO: link del sitio
+        url: '', // sin link todavía → se muestra como "Próximamente"
+        status: 'Próximamente',
 
         summary: 'Una web gratuita de cuentos de terror donde el protagonista es un gatito. Tiene audio cuentos pensados para niños y adolescentes: historias para escuchar con un poquito de miedo y mucha ternura.',
         highlights: [
