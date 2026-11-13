@@ -76,23 +76,23 @@ export const projects = [
         screenshots: [],
     },
     {
-        id: 'cuentos',
-        name: 'Cuentos de Miauedo', // TODO: nombre real del sitio
-        description: 'Cuentos de terror protagonizados por un gatito, con audio cuentos para niños y adolescentes.',
+        id: 'el-gato-de-satan',
+        name: 'El Gato de Satán',
+        description: 'Historias de terror tierno en audio, contadas junto a Mishi, para niños y adolescentes.',
         type: 'gratis',
         category: 'Audio cuentos',
         color: 'purple',
         image: 'assets/img/projects/cuentos.webp',
         imageAlt: 'Gatito diablito disfrazado de hombre lobo, con garras y colmillos, haciendo pose de susto',
-        url: '', // sin link todavía → se muestra como "Próximamente"
-        status: 'Próximamente',
+        url: 'https://elgatodesatan.com/',
+        status: 'Disponible',
 
-        summary: 'Una web gratuita de cuentos de terror donde el protagonista es un gatito. Tiene audio cuentos pensados para niños y adolescentes: historias para escuchar con un poquito de miedo y mucha ternura.',
+        summary: 'El Gato de Satán es una web gratuita de historias de terror tierno en audio, contadas junto a Mishi, un gatito diablito. Pensada para niños, adolescentes y valientes de todas las edades: historias para escuchar con un poquito de miedo y mucha ternura.',
         highlights: [
             'Gratis para todos',
-            'Audio cuentos para escuchar',
+            'Audio cuentos que se pueden escuchar incluso sin internet',
             'Historias de miedo pensadas para niños y adolescentes',
-            'Un gatito como personaje principal',
+            'Mishi, un gatito diablito, como personaje principal',
         ],
         screenshots: [
             // { src: 'assets/img/projects/cuentos/1.webp', alt: '…', caption: '…' },
