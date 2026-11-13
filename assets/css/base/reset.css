@@ -45,8 +45,10 @@ a {
     text-decoration: none;
 }
 
+/* Los <button> no heredan color ni fuente por defecto (el navegador los pone en negro) */
 button {
     font: inherit;
+    color: inherit;
 }
 
 button:focus-visible,
