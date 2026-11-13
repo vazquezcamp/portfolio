@@ -93,9 +93,14 @@ export const projects = [
             'Audio cuentos que se pueden escuchar incluso sin internet',
             'Historias de miedo pensadas para niños y adolescentes',
             'Mishi, un gatito diablito, como personaje principal',
+            'Cada historia indica edad, nivel de miedo y duración; además tiene juego y se instala como app',
         ],
         screenshots: [
-            // { src: 'assets/img/projects/cuentos/1.webp', alt: '…', caption: '…' },
+            {
+                src: 'assets/img/projects/cuentos/inicio.webp',
+                alt: 'Inicio de El Gato de Satán: historia destacada "Mishi: El fantasma de la cocina" con Mishi y un fantasma de harina, etiquetas de edad, nivel de miedo y duración, y botones Escuchar ahora y Más información',
+                caption: 'Inicio: historia destacada lista para escuchar',
+            },
         ],
     },
 ];
