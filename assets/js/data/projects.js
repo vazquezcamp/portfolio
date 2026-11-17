@@ -57,6 +57,27 @@ export const projects = [
         ],
     },
     {
+        id: 'panaderiapos',
+        name: 'PanaderiaPOS',
+        description: 'Punto de venta para panaderías y reposterías que funciona sin conexión a internet.',
+        type: 'planes',
+        category: 'Punto de venta',
+        color: 'rose',
+        image: 'assets/img/projects/panaderiapos.webp',
+        imageAlt: 'Gatito diablito panadero con gorro de chef, una charola de conchas recién horneadas y un rodillo',
+        url: 'https://panaderiapos.elgatodesatan.com/',
+
+        status: 'Disponible',
+        summary: 'PanaderiaPOS es un punto de venta pensado para panaderías y reposterías. Funciona sin conexión a internet, así que el negocio puede seguir vendiendo aunque se caiga la red.',
+        highlights: [
+            'Funciona offline, sin depender de internet',
+            'Hecho a la medida de panaderías y reposterías',
+        ],
+        screenshots: [
+            // { src: 'assets/img/projects/panaderiapos/1.webp', alt: '…', caption: '…' },
+        ],
+    },
+    {
         id: 'promodex',
         name: 'PromoDex',
         description: 'Lleva el control de tu colección de figuras promocionales: Vualá, Little Bites, Gansito, Nito y más.',
