@@ -38,7 +38,7 @@ export const projects = [
         color: 'peach',
         image: 'assets/img/projects/tacopos.webp',
         imageAlt: 'Gatito diablito taquero con un taco en la mano junto a un trompo de pastor',
-        url: 'https://silvestrec4.sg-host.com/',
+        url: 'https://tacopos.elgatodesatan.com/',
 
         status: 'Disponible',
         summary: 'TacoPOS es un punto de venta pensado para taquerías. Funciona sin conexión a internet, así que el negocio puede seguir vendiendo aunque se caiga la red.',
